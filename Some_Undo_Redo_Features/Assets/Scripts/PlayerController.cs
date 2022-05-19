@@ -5,10 +5,7 @@ public class PlayerController : MonoBehaviour {
 
     private const KeyCode DELETE_KEY = KeyCode.Delete;
 
-    /// <summary>
-    /// Hold Left-Mouse to make the object follow your mouse.
-    /// Lift it up to stop dragging.
-    /// </summary>
+  
     private const KeyCode DRAG_KEY = KeyCode.Mouse0;
 
     private const KeyCode UNDO_KEY = KeyCode.Z;
@@ -36,8 +33,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
-        // In case the object was disabled while dragging around;
-        // (Undo action 'deleted' the object while the cube was being dragged around)
+        
         if (currentlySelectedCube != null) {
             if (!currentlySelectedCube.gameObject.activeInHierarchy) {
                 currentlySelectedCube.DeselectCube();
@@ -47,7 +43,7 @@ public class PlayerController : MonoBehaviour {
 
 
         if (Input.GetKeyDown(DRAG_KEY)) {
-            // Cant select another cube if one is currently selected.
+           
             if (currentlySelectedCube == null) {
                 HandlePlayerSelectingCube();
             }
@@ -124,9 +120,7 @@ public class PlayerController : MonoBehaviour {
         #endregion
     }
 
-    /// <summary>
-    /// Called by the unity's creation button in the game scene.
-    /// </summary>
+    
     public void CreateNewCubeAtOrigin() {
         GameObject newCube = Instantiate(playerCubePrefab).gameObject;
         newCube.transform.position = Vector3.zero;
